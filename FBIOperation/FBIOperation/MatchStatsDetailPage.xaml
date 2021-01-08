@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:FBIOperation"
+             xmlns:services="clr-namespace:FBIOperation.Services"
+             xmlns:models="clr-namespace:FBIOperation.Models"
+             x:Class="FBIOperation.MatchStatsDetailPage"
+             BindingContext="{Binding Source={RelativeSource Self}, Path=MatchEvent}"
+             Title="{Binding Path=League.ShortName}">
+    <ContentPage.Resources>
+        <services:ProgressColorProducer x:Key="ProgressColorProducer"/>
+        <services:ProgressValueProducer x:Key="ProgressValueProducer"/>
+        <services:ProgressBackgroundColorProducer x:Key="ProgressBackgroundColorProducer"/>
+    </ContentPage.Resources>
+        
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Padding="28, 0">
+                <local:MainMatchInfoTable Margin="0, 24, 0, 16"/>
+                <Frame BackgroundColor="{Binding SportTypeColor}"
+                       Padding="0"
+                       WidthRequest="145"
+                       HeightRequest="45"
+                       CornerRadius="22"
+                       HorizontalOptions="CenterAndExpand">
+                    <Label
+                        FontSize="16"
+                        Text="Статистика"
+                        FontFamily="Roboto-Medium"
+                        TextColor="#F3F3F3"
+                        VerticalOptions="Center"
+                        HorizontalOptions="Center"
+                        />
+                </Frame>
+                <CollectionView ItemsSource="{Binding Stats}"
+                                Margin="0, 16, 0, 0"
+                                VerticalOptions="Start"
+                                >
+                    <CollectionView.ItemsLayout>
+                        <LinearItemsLayout Orientation="Vertical" ItemSpacing="15"/>
+                    </CollectionView.ItemsLayout>
+                    
+                    <CollectionView.Header>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="{Binding Name}"
+                                   TextColor="#828282"
+                                   FontSize="16"
+                                   FontFamily="Roboto-Light"
+                                   BindingContext="{Binding HomeTeam}"/>
+                            <Label Text="{Binding Name}"
+                                   FontSize="16"
+                                   TextColor="#828282"
+                                   BindingContext="{Binding GuestTeam}"
+                                   FontFamily="Roboto-Light"
+                                   HorizontalOptions="EndAndExpand"
+                                   HorizontalTextAlignment="End"/>
+                        </StackLayout>
+                    </CollectionView.Header>
+
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <StackLayout Orientation="Vertical"
+                                         Spacing="0">
+                                <Label Text="{Binding StatsName}"
+                                       VerticalOptions="FillAndExpand"
+                                       HorizontalTextAlignment="Center"
+                                       FontSize="14"
+                                       FontFamily="Roboto-Light"
+                                       />
+                                <StackLayout Orientation="Horizontal"
+                                             Spacing="8"
+                                             >
+                                    <Label Text="{Binding HomeValue}"
+                                           TextColor="#484848"
+                                           FontSize="18"
+                                           VerticalOptions="Center"
+                                           WidthRequest="25"
+                                           FontFamily="Roboto-Regular"
+                                           />
+                                    <ProgressBar HorizontalOptions="FillAndExpand"
+                                                 VerticalOptions="Center"
+                                                 HeightRequest="2"
+                                                 BindingContext="{Binding Source={RelativeSource AncestorType={x:Type models:MatchEvent}}}"
+                                                 Progress="{Binding Source={RelativeSource AncestorType={x:Type StackLayout}}, Path=BindingContext, Converter={StaticResource ProgressValueProducer}}"
+                                                 >
+                                        <ProgressBar.ProgressColor>
+                                            <MultiBinding Converter="{StaticResource ProgressColorProducer}">
+                                                <Binding Source="{RelativeSource AncestorType={x:Type StackLayout}}" Path="BindingContext"/>
+                                                <Binding/>
+                                            </MultiBinding>
+                                        </ProgressBar.ProgressColor>
+
+                                        <ProgressBar.BackgroundColor>
+                                            <MultiBinding Converter="{StaticResource ProgressBackgroundColorProducer}">
+                                                <Binding Source="{RelativeSource AncestorType={x:Type StackLayout}}" Path="BindingContext"/>
+                                                <Binding/>
+                                            </MultiBinding>
+                                        </ProgressBar.BackgroundColor>
+                                    </ProgressBar>
+                                    <Label Text="{Binding GuestValue}"
+                                           FontSize="18"
+                                           FontFamily="Roboto-Regular"
+                                           TextColor="#484848"
+                                           VerticalOptions="Center"
+                                           HorizontalOptions="End"
+                                           HorizontalTextAlignment="End"
+                                           WidthRequest="25"/>
+                                </StackLayout>
+                            </StackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

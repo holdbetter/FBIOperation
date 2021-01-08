@@ -1,0 +1,78 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DebugType>portable</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Assets\ball.png" />
+    <None Remove="Fonts\Roboto-Bold.ttf" />
+    <None Remove="Fonts\Roboto-Light.ttf" />
+    <None Remove="Fonts\Roboto-Medium.ttf" />
+    <None Remove="Fonts\Roboto-Regular.ttf" />
+    <None Remove="Images\ball.png" />
+    <None Remove="Images\barcaLogo.png" />
+    <None Remove="Images\bsball.png" />
+    <None Remove="Images\chelseaLogo.png" />
+    <None Remove="Images\liverLogo.png" />
+    <None Remove="Images\moscowLogo.png" />
+    <None Remove="Images\puck.png" />
+    <None Remove="Images\rubinLogo.png" />
+    <None Remove="Images\saturnLogo.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Fonts\Roboto-Bold.ttf" />
+    <EmbeddedResource Include="Fonts\Roboto-Light.ttf" />
+    <EmbeddedResource Include="Fonts\Roboto-Medium.ttf" />
+    <EmbeddedResource Include="Fonts\Roboto-Regular.ttf" />
+    <EmbeddedResource Include="Images\ball.png" />
+    <EmbeddedResource Include="Images\barcaLogo.png" />
+    <EmbeddedResource Include="Images\bsball.png" />
+    <EmbeddedResource Include="Images\chelseaLogo.png" />
+    <EmbeddedResource Include="Images\liverLogo.png" />
+    <EmbeddedResource Include="Images\moscowLogo.png" />
+    <EmbeddedResource Include="Images\puck.png" />
+    <EmbeddedResource Include="Images\saturnLogo.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Xamarin.Forms" Version="4.8.0.1560" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.5.3.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Images\rubinLogo.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Assets\ball.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="BoxViewManagement.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="FirstBinding.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="MainMatchInfoTable.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="MatchOverviewPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="MatchStats.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="MatchStatsDetailPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+</Project>

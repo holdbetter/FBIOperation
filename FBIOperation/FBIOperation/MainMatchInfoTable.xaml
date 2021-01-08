@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FBIOperation.MainMatchInfoTable">
+  <ContentView.Content>
+        <Grid RowDefinitions="30, 50"
+              ColumnDefinitions="30, 8*, 1*"
+              ColumnSpacing="16"
+              RowSpacing="16">
+            <Image HeightRequest="30" 
+                   WidthRequest="30"
+                   x:Name="homeTeamImage"
+                   Grid.Row="0"
+                   Grid.Column="0"/>
+            <Image HeightRequest="30"
+                   WidthRequest="30"
+                   x:Name="guestTeamImage"
+                   Grid.Row="1"
+                   Grid.Column="0"/>
+            <Label Text="{Binding Name}"
+                   FontSize="24"
+                   TextColor="#484848"
+                   Grid.Row="0"
+                   Grid.Column="1"
+                   FontFamily="Roboto-Bold"
+                   VerticalTextAlignment="Center"
+                   BindingContext="{Binding HomeTeam}"/>
+            <Label Text="{Binding Name}" 
+                   FontSize="24"
+                   TextColor="#484848"
+                   Grid.Row="1"
+                   Grid.Column="1"
+                   FontFamily="Roboto-Bold"
+                   VerticalTextAlignment="Center"
+                   BindingContext="{Binding GuestTeam}"
+                   />
+            <Label Text="{Binding HomeTeamScore}}" 
+                   FontSize="24"
+                   FontFamily="Roboto-Bold"
+                   TextColor="#484848"
+                   Grid.Row="0"
+                   Grid.Column="2"
+                   HorizontalTextAlignment="End"
+                   VerticalTextAlignment="Center"/>
+            <Label Text="{Binding GuestTeamScore}" 
+                   FontSize="24" 
+                   FontFamily="Roboto-Bold" 
+                   TextColor="#484848"
+                   Grid.Row="1"
+                   Grid.Column="2"
+                   HorizontalTextAlignment="End"
+                   VerticalTextAlignment="Center"/>
+        </Grid>
+  </ContentView.Content>
+</ContentView>

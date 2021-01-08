@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FBIOperation.BoxViewManagement">
+    <ContentPage.Content>
+        <FlexLayout Direction="Row"
+                    JustifyContent="SpaceAround"
+                    AlignItems="Center">
+            <BoxView HeightRequest="200"
+                     WidthRequest="200"
+                     x:Name="boxView"
+                     BackgroundColor="CornflowerBlue"
+                     IsVisible="{Binding Source={x:Reference checkBox}, Path=IsChecked}"
+                     CornerRadius="{Binding Source={x:Reference slider}, Path=Value}"/>
+            <StackLayout Orientation="Vertical"
+                         BindingContext="{x:Reference slider}">
+                <Label Text="{Binding Value, StringFormat='Радиус BoxView: {0:F0}'}"
+                       Margin="16, 0, 0, 0"
+                       />
+                <StackLayout Orientation="Horizontal"
+                             Spacing="8"
+                             >
+                    <Label Text="{Binding Minimum}"
+                           VerticalOptions="Center"
+                           Margin="0, 0, 0, 6"/>
+                    <Slider Minimum="0" 
+                            Maximum="100"
+                            x:Name="slider"
+                            WidthRequest="150"
+                            ThumbColor="CornflowerBlue"
+                            MinimumTrackColor="DeepSkyBlue"
+                            MaximumTrackColor="LightBlue"/>
+                    <Label Text="{Binding Maximum}"
+                           VerticalOptions="Center"
+                           Margin="0, 0, 0, 6"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal"
+                             Spacing="0">
+                    <CheckBox Color="CornflowerBlue"
+                              x:Name="checkBox"
+                              IsChecked="True"
+                              />
+                    <Label Text="Включить BoxView"
+                           VerticalOptions="CenterAndExpand"
+                           Margin="2, 0, 0, 2"/>
+                </StackLayout>
+            </StackLayout>
+        </FlexLayout>
+    </ContentPage.Content>
+</ContentPage>
